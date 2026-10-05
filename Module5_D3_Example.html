@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Module 5 – D3 SVG Basics Combined Example</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    .title { font-size: 22px; font-weight: bold; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="title">Module 5 – SVG & D3 Drawing Basics (Combined Example)</div>
+
+<script>
+// ------------------------------------------------------------
+// SETUP
+// ------------------------------------------------------------
+const width = 900;
+const height = 550;
+
+const svg = d3.select("body")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .style("border", "1px solid #ccc");
+
+// ------------------------------------------------------------
+// GROUP 1: BASIC SHAPES
+// ------------------------------------------------------------
+const group1 = svg.append("g")
+  .attr("transform", "translate(50, 40)");
+
+group1.append("rect")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", 120)
+  .attr("height", 70)
+  .attr("fill", "lightblue")
+  .attr("stroke", "steelblue")
+  .attr("stroke-width", 2);
+
+group1.append("circle")
+  .attr("cx", 200)
+  .attr("cy", 40)
+  .attr("r", 35)
+  .attr("fill", "lightgreen")
+  .attr("stroke", "green")
+  .attr("stroke-width", 2);
+
+group1.append("line")
+  .attr("x1", 280)
+  .attr("y1", 10)
+  .attr("x2", 380)
+  .attr("y2", 60)
+  .attr("stroke", "black")
+  .attr("stroke-width", 3);
+
+group1.append("text")
+  .attr("x", 0)
+  .attr("y", -10)
+  .attr("font-size", "16px")
+  .text("Basic Shapes: rect, circle, line");
+
+// ------------------------------------------------------------
+// GROUP 2: TRANSFORMATIONS
+// ------------------------------------------------------------
+const group2 = svg.append("g")
+  .attr("transform", "translate(50, 180)");
+
+group2.append("rect")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", 120)
+  .attr("height", 60)
+  .attr("fill", "salmon")
+  .attr("opacity", 0.5);
+
+group2.append("rect")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", 120)
+  .attr("height", 60)
+  .attr("fill", "salmon")
+  .attr("transform", "translate(150, 0)");
+
+group2.append("rect")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", 120)
+  .attr("height", 60)
+  .attr("fill", "salmon")
+  .attr("transform", "rotate(25, 300, 30)");
+
+group2.append("rect")
+  .attr("x", 380)
+  .attr("y", 0)
+  .attr("width", 120)
+  .attr("height", 60)
+  .attr("fill", "salmon")
+  .attr("transform", "scale(1.5, 0.8)");
+
+group2.append("text")
+  .attr("x", 0)
+  .attr("y", -10)
+  .attr("font-size", "16px")
+  .text("Transformations: translate, rotate, scale");
+
+// ------------------------------------------------------------
+// GROUP 3: CUSTOM PATH
+// ------------------------------------------------------------
+const group3 = svg.append("g")
+  .attr("transform", "translate(50, 330)");
+
+const pathData = "M10 80 Q 95 10 180 80 T 350 80";
+
+group3.append("path")
+  .attr("d", pathData)
+  .attr("fill", "none")
+  .attr("stroke", "purple")
+  .attr("stroke-width", 3);
+
+group3.append("text")
+  .attr("x", 0)
+  .attr("y", -10)
+  .attr("font-size", "16px")
+  .text("Custom SVG Path (Quadratic Bézier curve)");
+
+// ------------------------------------------------------------
+// GROUP 4: TEXT STYLING
+// ------------------------------------------------------------
+const group4 = svg.append("g")
+  .attr("transform", "translate(500, 80)");
+
+group4.append("text")
+  .text("Styled SVG Text Example")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("font-size", "22px")
+  .attr("font-weight", "bold")
+  .attr("fill", "darkblue");
+
+group4.append("text")
+  .text("Rotated Text")
+  .attr("x", 0)
+  .attr("y", 40)
+  .attr("font-size", "18px")
+  .attr("fill", "green")
+  .attr("transform", "rotate(-20)");
+
+// ------------------------------------------------------------
+// GROUP 5: D3 TRANSITION
+// ------------------------------------------------------------
+const group5 = svg.append("g")
+  .attr("transform", "translate(500, 200)");
+
+const animatedCircle = group5.append("circle")
+  .attr("cx", 50)
+  .attr("cy", 50)
+  .attr("r", 30)
+  .attr("fill", "orange");
+
+animatedCircle
+  .transition()
+  .duration(1500)
+  .attr("r", 60)
+  .attr("fill", "orangered")
+  .transition()
+  .duration(1500)
+  .attr("r", 30)
+  .attr("fill", "orange");
+
+group5.append("text")
+  .attr("x", 0)
+  .attr("y", -10)
+  .attr("font-size", "16px")
+  .text("D3 Transitions (Circle animation)");
+</script>
+
+</body>
+</html>
